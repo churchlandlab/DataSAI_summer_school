@@ -23,7 +23,7 @@ def download_neural_data(data_type, destination = None):
     import os
 
     if data_type == "miniscope":
-        url = "https://drive.google.com/file/d/1cLbUqh2LKLXuwqXdjyvMi4DuKMFC0DiM/view?usp=drive_link"
+        url = "https://drive.google.com/file/d/1JT0TcbWDKsB90CRMy0XX8dCSaO7Dxvi8/view?usp=drive_link"
         fname = "miniscope_data.npy"
     elif data_type == "widefield":
         url = "https://drive.google.com/file/d/1XNCPKY5bRS9QtvY1aj982CjaCkMgeOJt/view?usp=drive_link"
