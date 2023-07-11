@@ -1,8 +1,5 @@
-
-
-
-
-
+import os
+import numpy as np
 
 def download_neural_data(data_type, destination = None):
     '''Function to automatically download either miniscope or widefield data from
@@ -36,5 +33,17 @@ def download_neural_data(data_type, destination = None):
             os.makedirs(destination)
     data_file = os.path.join(destination, fname)
 
-    gdown.download(url, data_file, quiet=False, fuzzy =True)
+    if not os.path.exists(data_file):
+        gdown.download(url, data_file, quiet=False, fuzzy =True)
     return data_file
+
+def load_miniscope(data_path):
+    data = np.load(data_path, allow_pickle=True).tolist()
+
+    design_matrix = data['design_matrix']
+    Y_raw_fluorescence = data['Y_raw_fluorescence']
+    neuron_footprints = data['neuron_footprints']
+    timepoints_per_trial = data['timepoints_per_trial']
+    frame_rate = data['frame_rate']
+    aligned_segment_start = data['aligned_segment_start']
+    return design_matrix, Y_raw_fluorescence, neuron_footprints, timepoints_per_trial, frame_rate, aligned_segment_start
